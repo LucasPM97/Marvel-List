@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.home
+package com.lucas.marvellist.ui.hero_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
