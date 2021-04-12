@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_hero_list"
-        android:name="com.lucas.marvellist.ui.home.HeroListFragment"
+        android:name="com.lucas.marvellist.ui.hero_list.HeroListFragment"
         android:label="@string/title_hero_list"
         tools:layout="@layout/fragment_hero_list" />
 
