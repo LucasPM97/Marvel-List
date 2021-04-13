@@ -4,6 +4,6 @@ import com.lucas.marvellist.models.Hero
 
 interface IHeroListRepository {
 
-    suspend fun getCharacters() : List<Hero>?
+    suspend fun getCharacters(offSet: Int): List<Hero>?
 
 }

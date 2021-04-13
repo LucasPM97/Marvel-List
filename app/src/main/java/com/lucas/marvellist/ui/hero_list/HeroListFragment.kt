@@ -7,6 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.FragmentHeroListBinding
+import com.lucas.marvellist.models.interfaces.IScrollToBottomListener
+import com.lucas.marvellist.utils.extensions.setScrollToBottomListener
 
 class HeroListFragment : Fragment(R.layout.fragment_hero_list) {
 
@@ -25,6 +27,11 @@ class HeroListFragment : Fragment(R.layout.fragment_hero_list) {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter
+            setScrollToBottomListener(5, object : IScrollToBottomListener {
+                override fun bottomReached() {
+                    viewModel.loadMoreItems()
+                }
+            })
         }
 
         implementObservers()

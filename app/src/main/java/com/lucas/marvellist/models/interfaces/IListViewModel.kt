@@ -4,9 +4,14 @@ import androidx.lifecycle.MutableLiveData
 
 interface IListViewModel {
 
-    val isLoadingScreen : MutableLiveData<Boolean>
+    val isLoading: MutableLiveData<Boolean>
 
     fun loadScreenIfNeeded()
 
     fun needsToLoadScreen(): Boolean
+
+    fun loadMoreItems()
+
+    fun shouldLoadMore(): Boolean
+
 }
