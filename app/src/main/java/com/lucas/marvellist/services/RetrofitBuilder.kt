@@ -1,8 +1,5 @@
 package com.lucas.marvellist.services
 
-import com.lucas.marvellist.utils.extensions.md5
-import com.lucas.marvellist.utils.extensions.toHex
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -20,5 +17,5 @@ object RetrofitBuilder {
                 .build() //Doesn't require the adapter
     }
 
-    val heroService: HeroService = getRetrofit().create(HeroService::class.java)
+    val  heroService: HeroService = getRetrofit().create(HeroService::class.java)
 }
