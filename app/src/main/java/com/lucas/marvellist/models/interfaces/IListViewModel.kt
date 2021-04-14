@@ -6,6 +6,8 @@ interface IListViewModel {
 
     val isLoading: MutableLiveData<Boolean>
 
+    val error: MutableLiveData<Boolean>
+
     fun loadScreenIfNeeded()
 
     fun needsToLoadScreen(): Boolean

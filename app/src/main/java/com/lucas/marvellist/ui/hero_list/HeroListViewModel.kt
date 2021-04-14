@@ -18,8 +18,17 @@ class HeroListViewModel : ViewModel(), IHeroListViewModel, IListViewModel {
             RetrofitBuilder.heroService
     )
     override val isLoading = MutableLiveData<Boolean>()
+    override val error = MutableLiveData<Boolean>()
+
     init {
         showHideLoading(false)
+        showHideError(false)
+    }
+
+    private fun showHideError(visible: Boolean) {
+        error.value = visible
+    }
+
     private fun showHideLoading(visible: Boolean) {
         isLoading.value = visible
     }
@@ -31,8 +40,6 @@ class HeroListViewModel : ViewModel(), IHeroListViewModel, IListViewModel {
 
                 if (!result.isNullOrEmpty()) {
                     heroList.value = result
-                } else {
-                    //TODO: Show error
                 }
             }
         }
@@ -45,20 +52,24 @@ class HeroListViewModel : ViewModel(), IHeroListViewModel, IListViewModel {
             viewModelScope.launch {
                 val result = loadItems(heroList.value!!.count())
 
-
                 if (!result.isNullOrEmpty()) {
                     heroList.addRange(result)
-                } else {
-                    //TODO: Show error
                 }
             }
         }
     }
 
     private suspend fun loadItems(offSet: Int): List<Hero>? {
+        showHideError(false)
         showHideLoading(true)
         try {
-            return repository.getCharacters(offSet)
+            val result = repository.getCharacters(offSet)
+
+            if (result.isNullOrEmpty()) {
+                showHideError(true)
+            }
+
+            return result
         } finally {
             showHideLoading(false)
         }
