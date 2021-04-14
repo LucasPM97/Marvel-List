@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         navController = findNavController(R.id.nav_host_fragment)
 
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val appBarConfiguration = AppBarConfiguration(bottomNavigationScreensIds)
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -42,7 +42,9 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
             binding.bottomNavView.visibility =
-                if (bottomNavigationScreensIds.contains(destination.id)) View.VISIBLE else View.GONE
+                if (bottomNavigationScreensIds.contains(destination.id))
+                    View.VISIBLE else View.GONE
+
         }
     }
 
