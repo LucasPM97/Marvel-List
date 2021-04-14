@@ -18,11 +18,10 @@ private fun OkHttpClient.Builder.addMarvelInterceptor(): OkHttpClient.Builder {
         val httpUrl = originalRequest.url()
 
         val newHttpUrl = addMarvelApiQueryParameters(httpUrl)
-
+        println(newHttpUrl.url())
         val request = originalRequest.newBuilder()
                 .url(newHttpUrl)
                 .build()
-
         chain.proceed(request)
     }
 }

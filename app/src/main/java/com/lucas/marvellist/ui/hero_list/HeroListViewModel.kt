@@ -18,6 +18,11 @@ class HeroListViewModel : ViewModel(), IHeroListViewModel, IListViewModel {
             RetrofitBuilder.heroService
     )
     override val isLoading = MutableLiveData<Boolean>()
+    init {
+        showHideLoading(false)
+    private fun showHideLoading(visible: Boolean) {
+        isLoading.value = visible
+    }
 
     override fun loadScreenIfNeeded() {
         if (needsToLoadScreen()) {
@@ -59,12 +64,8 @@ class HeroListViewModel : ViewModel(), IHeroListViewModel, IListViewModel {
         }
     }
 
-    private fun showHideLoading(visible: Boolean) {
-        isLoading.value = visible
-    }
 
-    override fun shouldLoadMore(): Boolean {
-        return !heroList.value.isNullOrEmpty() && !(isLoading.value ?: true)
-    }
+    override fun shouldLoadMore(): Boolean =
+            !heroList.value.isNullOrEmpty() && !isLoading.value!!
 
 }

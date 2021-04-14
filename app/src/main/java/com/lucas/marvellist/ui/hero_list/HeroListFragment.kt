@@ -23,6 +23,8 @@ class HeroListFragment : Fragment(R.layout.fragment_hero_list) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentHeroListBinding.bind(view)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
