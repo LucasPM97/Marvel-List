@@ -8,8 +8,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="com.lucas.marvellist.ui.character_details.CharacterDetailsViewModel" />
+            name="character"
+            type="com.lucas.marvellist.models.Hero" />
     </data>
 
 
@@ -24,22 +24,23 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                imageUrl="@{viewModel.hero.thumbnail.bigImageUrl}"
+                imageUrl="@{character.thumbnail.bigImageUrl}"
                 android:layout_width="0dp"
                 android:layout_height="360dp"
+                android:background="@color/image_background_color"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars"
-                android:scaleType="centerCrop"
-                android:background="@color/image_background_color"/>
+                tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="255dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="46dp"
-                android:text="@{viewModel.hero.description}"
+                android:text="@{character.description}"
+                android:textColor="@color/description_text_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -61,12 +62,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="9dp"
+                android:nestedScrollingEnabled="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
-                tools:listitem="@layout/comic_item" />
+                tools:listitem="@layout/comic_item"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
