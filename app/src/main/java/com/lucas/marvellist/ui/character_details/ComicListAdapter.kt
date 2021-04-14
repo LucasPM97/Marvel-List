@@ -2,12 +2,9 @@ package com.lucas.marvellist.ui.character_details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.lucas.marvellist.databinding.ComicItemBinding
-import com.lucas.marvellist.databinding.HeroItemBinding
 import com.lucas.marvellist.models.Comic
-import com.lucas.marvellist.models.Hero
 
 class ComicListAdapter(
     private var comics: List<Comic>

@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.CharacterDetailsFragmentBinding
-import com.lucas.marvellist.ui.hero_list.HeroListAdapter
 
 class CharacterDetailsFragment : Fragment(R.layout.character_details_fragment) {
 

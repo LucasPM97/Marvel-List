@@ -3,7 +3,7 @@ package com.lucas.marvellist.ui.hero_list
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.lucas.marvellist.models.Hero
+import com.lucas.marvellist.models.Character
 import com.lucas.marvellist.models.interfaces.IHeroListViewModel
 import com.lucas.marvellist.models.interfaces.IListViewModel
 import com.lucas.marvellist.services.RetrofitBuilder
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class HeroListViewModel : ViewModel(), IHeroListViewModel, IListViewModel {
 
-    override val heroList = MutableLiveData<List<Hero>>()
+    override val heroList = MutableLiveData<List<Character>>()
     override val repository = HeroListRepository(
             RetrofitBuilder.heroService
     )
@@ -59,7 +59,7 @@ class HeroListViewModel : ViewModel(), IHeroListViewModel, IListViewModel {
         }
     }
 
-    private suspend fun loadItems(offSet: Int): List<Hero>? {
+    private suspend fun loadItems(offSet: Int): List<Character>? {
         showHideError(false)
         showHideLoading(true)
         try {

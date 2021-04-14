@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.lucas.marvellist.databinding.HeroItemBinding
-import com.lucas.marvellist.models.Hero
+import com.lucas.marvellist.models.Character
 
 class HeroListAdapter(
-    private var heroes: List<Hero>
+    private var heroes: List<Character>
 ) : RecyclerView.Adapter<HeroListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,14 +21,14 @@ class HeroListAdapter(
 
     override fun getItemCount(): Int = heroes.size
 
-    fun updateList(values: List<Hero>) {
+    fun updateList(values: List<Character>) {
         heroes = values
         notifyDataSetChanged()
     }
 
     class ViewHolder(private val binding: HeroItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(heroData: Hero) {
+        fun bind(heroData: Character) {
             binding.apply {
                 hero = heroData
                 root.setOnClickListener {

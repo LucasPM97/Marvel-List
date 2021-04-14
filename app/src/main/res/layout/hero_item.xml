@@ -6,7 +6,7 @@
 
         <variable
             name="hero"
-            type="com.lucas.marvellist.models.Hero" />
+            type="com.lucas.marvellist.models.Character" />
     </data>
 
     <androidx.cardview.widget.CardView
