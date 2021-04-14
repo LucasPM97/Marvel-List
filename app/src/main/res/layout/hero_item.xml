@@ -21,7 +21,7 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                imageUrl="@{hero.thumbnail.smallImageUrl}"
+                imageUrl="@{hero.smallImageUrl}"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:background="@color/image_background_color"
