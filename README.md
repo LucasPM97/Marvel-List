@@ -7,3 +7,7 @@ The app will not work without the correct implementation of the api keys. To add
 CONSUMER_KEY="<Marvel Public Api key>"
 CONSUMER_SECRET="<Marvel Private Api key>"
 ```
+
+### Issues
+
+- Classes names : Hero List classes should replace the "Hero" word to "Character"
