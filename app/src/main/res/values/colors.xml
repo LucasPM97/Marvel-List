@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="description_text_color">#222053</color>
     <color name="home_background">#ECEFF1</color>
+    <color name="image_background_color">#CACACA</color>
 </resources>
