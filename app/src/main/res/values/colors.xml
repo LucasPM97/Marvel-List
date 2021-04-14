@@ -10,4 +10,5 @@
     <color name="description_text_color">#222053</color>
     <color name="home_background">#ECEFF1</color>
     <color name="image_background_color">#CACACA</color>
+    <color name="app_bar_background">#262626</color>
 </resources>

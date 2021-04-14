@@ -2,6 +2,7 @@ package com.lucas.marvellist
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -32,10 +33,9 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         navController = findNavController(R.id.nav_host_fragment)
 
-        val appBarConfiguration = AppBarConfiguration(bottomNavigationScreensIds)
-
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
 
         binding.bottomNavView.setupWithNavController(navController)
 
