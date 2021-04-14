@@ -2,6 +2,7 @@ package com.lucas.marvellist.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.core.text.isDigitsOnly
 import java.lang.Exception
 
 data class Comic(
@@ -13,11 +14,15 @@ data class Comic(
         try {
             if (name.isNullOrEmpty()) return ""
 
-            return name.substring(name.indexOf("(") + 1, name.indexOf(")"))
+            val year = name.substring(name.indexOf("(") + 1, name.indexOf(")"))
+
+            if (year.isDigitsOnly()) return year
+
         } catch (ex: Exception) {
             println(ex)
-            return ""
         }
+
+        return ""
     }
 
     constructor(parcel: Parcel) : this(parcel.readString()) {
