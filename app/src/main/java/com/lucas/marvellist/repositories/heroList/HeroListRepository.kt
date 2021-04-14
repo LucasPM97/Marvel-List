@@ -1,11 +1,11 @@
 package com.lucas.marvellist.repositories.heroList
 
-import com.lucas.marvellist.models.Hero
+import com.lucas.marvellist.models.Character
 import com.lucas.marvellist.services.HeroService
 
 class HeroListRepository(private val heroApiService: HeroService) : IHeroListRepository {
 
-    override suspend fun getCharacters(offSet: Int): List<Hero>? {
+    override suspend fun getCharacters(offSet: Int): List<Character>? {
 
         try {
             val response = heroApiService.getCharacters(offSet)

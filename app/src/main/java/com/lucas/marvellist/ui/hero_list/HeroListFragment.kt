@@ -16,13 +16,10 @@ class HeroListFragment : Fragment(R.layout.fragment_hero_list) {
 
     private val listAdapter = HeroListAdapter(arrayListOf())
 
-
-    private lateinit var binding: FragmentHeroListBinding
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentHeroListBinding.bind(view)
+        val binding = FragmentHeroListBinding.bind(view)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 

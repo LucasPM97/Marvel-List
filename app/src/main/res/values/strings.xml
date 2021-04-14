@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">MarvelList</string>
-    <string name="title_hero_list">Personajes</string>
-    <string name="title_events">Eventos</string>
+    <string name="title_home_bar">Eventos</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="generic_server_error_message">Hubo un error al conectarse con nuestros servidores, por favor vuelva a intentarlo nuevamente</string>
+    <string name="character_details_label">{characterName}</string>
+    <string name="marvel_challenge_title">Marvel Challenge</string>
+    <string name="title_hero_list">Personajes</string>
+    <string name="title_events">Eventos</string>
 </resources>
