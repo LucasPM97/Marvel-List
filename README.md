@@ -8,6 +8,7 @@ CONSUMER_KEY="<Marvel Public Api key>"
 CONSUMER_SECRET="<Marvel Private Api key>"
 ```
 
-### Issues
+### Know-issues
 
 - Classes names : Hero List classes should replace the "Hero" word to "Character"
+- Loading : The ProgressBar should appear on the top of the screen only if is the first time the screen is loaded, and it should appear on the bottom of the screen when the user tries to get more items.
