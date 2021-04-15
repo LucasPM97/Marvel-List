@@ -19,9 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 imageUrl="@{event.smallImageUrl}"
+                top_left_corner_radius="@{@dimen/small_image_corner}"
+                bottom_left_corner_radius="@{@dimen/small_image_corner}"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
                 android:layout_marginStart="17dp"
@@ -51,7 +53,6 @@
                     android:fontFamily="sans-serif-condensed"
                     android:singleLine="true"
                     android:text="@{event.title}"
-                    android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="@dimen/title_font_size" />
 

@@ -19,9 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 imageUrl="@{hero.smallImageUrl}"
+                top_left_corner_radius="@{@dimen/small_image_corner}"
+                bottom_left_corner_radius="@{@dimen/small_image_corner}"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:background="@color/image_background_color"

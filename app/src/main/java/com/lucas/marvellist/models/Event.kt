@@ -17,8 +17,4 @@ data class Event(
     fun getSmallImageUrl(): String {
         return thumbnail?.getSmallImageUrl() ?: ""
     }
-
-    fun getBigImageUrl(): String {
-        return thumbnail?.getBigImageUrl() ?: ""
-    }
 }
