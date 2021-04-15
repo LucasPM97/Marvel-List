@@ -21,9 +21,9 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
+                bottom_left_corner_radius="@{@dimen/small_image_corner}"
                 imageUrl="@{event.smallImageUrl}"
                 top_left_corner_radius="@{@dimen/small_image_corner}"
-                bottom_left_corner_radius="@{@dimen/small_image_corner}"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
                 android:layout_marginStart="17dp"
@@ -40,7 +40,6 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="33dp"
                 android:layout_marginTop="17dp"
-                android:layout_marginBottom="28dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
