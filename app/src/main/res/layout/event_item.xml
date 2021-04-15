@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="hero"
-            type="com.lucas.marvellist.models.Character" />
+            name="event"
+            type="com.lucas.marvellist.models.Event" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -21,11 +21,14 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
-                imageUrl="@{hero.smallImageUrl}"
-                top_left_corner_radius="@{@dimen/small_image_corner}"
                 bottom_left_corner_radius="@{@dimen/small_image_corner}"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                imageUrl="@{event.smallImageUrl}"
+                top_left_corner_radius="@{@dimen/small_image_corner}"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="17dp"
                 android:background="@color/image_background_color"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -35,9 +38,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="28dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="17dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +51,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed"
                     android:singleLine="true"
-                    android:text="@{hero.name}"
-                    android:textAllCaps="true"
+                    android:text="@{event.title}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/title_font_size" />
 
@@ -58,9 +59,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="9dp"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:text="@{hero.description}"
+                    android:text="@{event.startDate}"
+                    android:textColor="@color/description_text_color"
+                    android:textSize="@dimen/description_font_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{event.endDate}"
                     android:textColor="@color/description_text_color"
                     android:textSize="@dimen/description_font_size" />
             </LinearLayout>

@@ -9,13 +9,14 @@ object RetrofitBuilder {
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(
-                        createMarvelApiClient()
-                )
-                .addConverterFactory(GsonConverterFactory.create())
-                .build() //Doesn't require the adapter
+            .baseUrl(BASE_URL)
+            .client(
+                createMarvelApiClient()
+            )
+            .addConverterFactory(GsonConverterFactory.create())
+            .build() //Doesn't require the adapter
     }
 
-    val  heroService: HeroService = getRetrofit().create(HeroService::class.java)
+    val heroService: HeroService = getRetrofit().create(HeroService::class.java)
+    val eventsService: EventsService = getRetrofit().create(EventsService::class.java)
 }

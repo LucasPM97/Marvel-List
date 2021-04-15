@@ -1,20 +1,21 @@
-package com.lucas.marvellist.ui.hero_list
+package com.lucas.marvellist.ui.events
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.lucas.marvellist.models.Character
+import com.lucas.marvellist.models.Event
 import com.lucas.marvellist.models.genericViewModels.BaseListViewModel
-import com.lucas.marvellist.models.interfaces.IHeroListViewModel
-import com.lucas.marvellist.repositories.heroList.HeroListRepository
+import com.lucas.marvellist.models.interfaces.IEventsViewModel
+import com.lucas.marvellist.repositories.events.EventsRepository
 import com.lucas.marvellist.services.RetrofitBuilder
 import com.lucas.marvellist.utils.extensions.addRange
 import kotlinx.coroutines.launch
 
-class HeroListViewModel : BaseListViewModel(), IHeroListViewModel {
+class EventsViewModel : BaseListViewModel(), IEventsViewModel {
 
-    override val heroList = MutableLiveData<List<Character>>()
-    override val repository = HeroListRepository(
-        RetrofitBuilder.heroService
+    override val eventList = MutableLiveData<List<Event>>()
+
+    override val repository = EventsRepository(
+        RetrofitBuilder.eventsService
     )
 
     override fun loadScreenIfNeeded() {
@@ -23,31 +24,31 @@ class HeroListViewModel : BaseListViewModel(), IHeroListViewModel {
                 val result = loadItems(0)
 
                 if (!result.isNullOrEmpty()) {
-                    heroList.value = result
+                    eventList.value = result
                 }
             }
         }
     }
 
-    override fun needsToLoadScreen(): Boolean = heroList.value.isNullOrEmpty()
+    override fun needsToLoadScreen(): Boolean = eventList.value.isNullOrEmpty()
 
     override fun loadMoreItems() {
         if (shouldLoadMore()) {
             viewModelScope.launch {
-                val result = loadItems(heroList.value!!.count())
+                val result = loadItems(eventList.value!!.count())
 
                 if (!result.isNullOrEmpty()) {
-                    heroList.addRange(result)
+                    eventList.addRange(result)
                 }
             }
         }
     }
 
-    private suspend fun loadItems(offSet: Int): List<Character>? {
+    private suspend fun loadItems(offSet: Int): List<Event>? {
         showHideError(false)
         showHideLoading(true)
         try {
-            val result = repository.getCharacters(offSet)
+            val result = repository.getEvents(offSet)
 
             if (result.isNullOrEmpty()) {
                 showHideError(true)
@@ -61,6 +62,5 @@ class HeroListViewModel : BaseListViewModel(), IHeroListViewModel {
 
 
     override fun shouldLoadMore(): Boolean =
-        !heroList.value.isNullOrEmpty() && !isLoading.value!!
-
+        !eventList.value.isNullOrEmpty() && !isLoading.value!!
 }

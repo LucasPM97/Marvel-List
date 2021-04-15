@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_events"
-        android:name="com.lucas.marvellist.ui.dashboard.EventsFragment"
+        android:name="com.lucas.marvellist.ui.events.EventsFragment"
         android:label="@string/marvel_challenge_title"
         tools:layout="@layout/fragment_events" />
     <fragment

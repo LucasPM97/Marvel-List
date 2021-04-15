@@ -24,7 +24,7 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                imageUrl="@{character.thumbnail.bigImageUrl}"
+                imageUrl="@{character.bigImageUrl}"
                 android:layout_width="0dp"
                 android:layout_height="360dp"
                 android:background="@color/image_background_color"

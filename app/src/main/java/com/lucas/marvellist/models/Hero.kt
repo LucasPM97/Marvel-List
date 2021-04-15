@@ -19,6 +19,14 @@ data class Character(
     ) {
     }
 
+    fun getSmallImageUrl(): String {
+        return thumbnail?.getSmallImageUrl() ?: ""
+    }
+
+    fun getBigImageUrl(): String {
+        return thumbnail?.getBigImageUrl() ?: ""
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
         parcel.writeString(name)
