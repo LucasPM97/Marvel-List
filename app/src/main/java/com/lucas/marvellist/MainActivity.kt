@@ -1,7 +1,5 @@
 package com.lucas.marvellist
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -34,18 +32,21 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
 
         val appBarConfiguration = AppBarConfiguration(bottomNavigationScreensIds)
-        setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.bottomNavView.setupWithNavController(navController)
-        binding.bottomNavView.itemIconTintList = null
+        binding.apply {
+            setSupportActionBar(toolbar)
+            setupActionBarWithNavController(navController, appBarConfiguration)
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottomNavView.let {
+                it.setupWithNavController(navController)
+                it.itemIconTintList = null
+                navController.addOnDestinationChangedListener { _, destination, _ ->
 
-            binding.bottomNavView.visibility =
-                if (bottomNavigationScreensIds.contains(destination.id))
-                    View.VISIBLE else View.GONE
-
+                    it.visibility =
+                        if (bottomNavigationScreensIds.contains(destination.id))
+                            View.VISIBLE else View.GONE
+                }
+            }
         }
     }
 
