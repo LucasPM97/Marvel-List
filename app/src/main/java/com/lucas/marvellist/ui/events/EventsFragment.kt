@@ -2,15 +2,15 @@ package com.lucas.marvellist.ui.events
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.FragmentEventsBinding
 import com.lucas.marvellist.models.interfaces.IScrollToBottomListener
+import com.lucas.marvellist.ui.BaseFragment
 import com.lucas.marvellist.utils.extensions.setScrollToBottomListener
 
-class EventsFragment : Fragment(R.layout.fragment_events) {
+class EventsFragment : BaseFragment(R.layout.fragment_events) {
 
     private val viewModel: EventsViewModel by viewModels()
 

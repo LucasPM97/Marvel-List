@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         R.id.navigation_hero_list,
         R.id.navigation_events
     )
+    private val topLevelScreen: Set<Int> = bottomNavigationScreensIds.union(
+        setOf(R.id.navigation_login)
+    )
 
     private lateinit var navController: NavController
 
@@ -31,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         navController = findNavController(R.id.nav_host_fragment)
 
-        val appBarConfiguration = AppBarConfiguration(bottomNavigationScreensIds)
+        val appBarConfiguration = AppBarConfiguration(topLevelScreen)
 
         binding.apply {
             setSupportActionBar(toolbar)
