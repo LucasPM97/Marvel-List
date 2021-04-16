@@ -1,9 +1,7 @@
 package com.lucas.marvellist.repositories.events
 
-import com.lucas.marvellist.models.Character
 import com.lucas.marvellist.models.Event
 import com.lucas.marvellist.services.EventsService
-import com.lucas.marvellist.services.HeroService
 
 class EventsRepository(private val eventsApiService: EventsService) : IEventsRepository {
 

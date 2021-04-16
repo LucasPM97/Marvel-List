@@ -9,6 +9,7 @@ import retrofit2.http.Query
 interface EventsService {
     @GET("events")
     suspend fun getEvents(
-        @Query("offset") offset: Int
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int = 25
     ): Response<MarvelAPIResponseModel<List<Event>>>
 }

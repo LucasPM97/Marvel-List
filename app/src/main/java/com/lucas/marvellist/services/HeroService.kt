@@ -9,6 +9,7 @@ import retrofit2.http.Query
 interface HeroService {
     @GET("characters")
     suspend fun getCharacters(
-        @Query("offset") offset: Int
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int = 15
     ): Response<MarvelAPIResponseModel<List<Character>>>
 }

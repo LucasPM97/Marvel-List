@@ -5,11 +5,10 @@ import com.facebook.login.LoginManager
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.lucas.marvellist.models.interfaces.IAuthenticationManager
 import com.lucas.marvellist.utils.extensions.awaitTaskResult
-import java.lang.Exception
 
 class AuthenticationManager private constructor() {
 
@@ -19,11 +18,11 @@ class AuthenticationManager private constructor() {
         val INSTANCE = AuthenticationManager()
     }
 
-    companion object {
+    companion object : IAuthenticationManager {
 
         private val instance: AuthenticationManager by lazy { HOLDER.INSTANCE }
 
-        suspend fun loginWithFirebaseFacebook(accessToken: AccessToken): AuthResult? {
+        override suspend fun loginWithFirebaseFacebook(accessToken: AccessToken): AuthResult? {
             return try {
                 awaitLoginWithFirebaseFacebook(accessToken)
             } catch (ex: Exception) {
@@ -36,10 +35,10 @@ class AuthenticationManager private constructor() {
             return awaitTaskResult(instance.firebaseAuth.signInWithCredential(credential))
         }
 
-        fun authStateListener(listener: FirebaseAuth.AuthStateListener) =
+        override fun authStateListener(listener: FirebaseAuth.AuthStateListener) =
             instance.firebaseAuth.addAuthStateListener(listener)
 
-        fun facebooklogOut() {
+        override fun facebooklogOut() {
             LoginManager.getInstance().logOut()
         }
     }

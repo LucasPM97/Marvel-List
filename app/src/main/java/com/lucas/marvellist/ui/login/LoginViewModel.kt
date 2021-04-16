@@ -4,19 +4,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.facebook.AccessToken
-import com.facebook.login.LoginManager
+import com.lucas.marvellist.models.interfaces.ILoginViewModel
 import com.lucas.marvellist.utils.AuthenticationManager
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel : ViewModel(), ILoginViewModel {
 
-    val error = MutableLiveData<Boolean>()
+    override val error = MutableLiveData<Boolean>()
 
     init {
         showHideErrorMessage(false)
     }
 
-    fun loginWithFacebookCredentials(accessToken: AccessToken) {
+    override fun loginWithFacebookCredentials(accessToken: AccessToken) {
         viewModelScope.launch {
 
             val result = AuthenticationManager.loginWithFirebaseFacebook(accessToken)
@@ -29,7 +29,7 @@ class LoginViewModel : ViewModel() {
         }
     }
 
-    fun showHideErrorMessage(visible: Boolean) {
+    override fun showHideErrorMessage(visible: Boolean) {
         error.value = visible
     }
 }
