@@ -59,6 +59,6 @@ fun loadImage(view: ImageView, url: String?) {
 
 //Generic View
 @BindingAdapter("isVisible")
-fun setVisibility(view: View, visible: Boolean) {
-    view.visibility = if (visible) View.VISIBLE else View.GONE
+fun setVisibility(view: View, visible: Boolean? = false) {
+    view.visibility = if (visible != null && visible) View.VISIBLE else View.GONE
 }

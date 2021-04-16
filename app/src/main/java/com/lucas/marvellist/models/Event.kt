@@ -7,7 +7,9 @@ data class Event(
     private val start: String?,
     private val end: String?,
     val thumbnail: ImageThumbnail? = null,
+    val comics: ComicCollection? = null
 ) {
+
     fun getStartDate(): String {
         return start?.toSimplifiedDateString() ?: ""
     }

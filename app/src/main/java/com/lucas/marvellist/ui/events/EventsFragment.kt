@@ -19,19 +19,21 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentEventsBinding.bind(view)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
+        FragmentEventsBinding.bind(view).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@EventsFragment.viewModel
 
-        binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = listAdapter
-            setScrollToBottomListener(5, object : IScrollToBottomListener {
-                override fun bottomReached() {
-                    viewModel.loadMoreItems()
-                }
-            })
+            recyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = listAdapter
+                setScrollToBottomListener(5, object : IScrollToBottomListener {
+                    override fun bottomReached() {
+                        this@EventsFragment.viewModel.loadMoreItems()
+                    }
+                })
+            }
         }
+
 
         implementObservers()
         viewModel.loadScreenIfNeeded()

@@ -19,18 +19,20 @@ class HeroListFragment : Fragment(R.layout.fragment_hero_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentHeroListBinding.bind(view)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
+        FragmentHeroListBinding.bind(view).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@HeroListFragment.viewModel
 
-        binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = listAdapter
-            setScrollToBottomListener(5, object : IScrollToBottomListener {
-                override fun bottomReached() {
-                    viewModel.loadMoreItems()
-                }
-            })
+            recyclerView.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = listAdapter
+                setScrollToBottomListener(5, object : IScrollToBottomListener {
+                    override fun bottomReached() {
+                        this@HeroListFragment.viewModel.loadMoreItems()
+                    }
+                })
+            }
+
         }
 
         implementObservers()
