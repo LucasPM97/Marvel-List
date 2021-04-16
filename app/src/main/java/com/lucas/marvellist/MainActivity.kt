@@ -1,9 +1,9 @@
 package com.lucas.marvellist
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.bottomNavView.setupWithNavController(navController)
+        binding.bottomNavView.itemIconTintList = null
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
@@ -47,7 +48,6 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
 
     fun setupView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
