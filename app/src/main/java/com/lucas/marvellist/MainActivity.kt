@@ -2,8 +2,6 @@ package com.lucas.marvellist
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -34,20 +32,23 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
 
         val appBarConfiguration = AppBarConfiguration(bottomNavigationScreensIds)
-        setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.bottomNavView.setupWithNavController(navController)
+        binding.apply {
+            setSupportActionBar(toolbar)
+            setupActionBarWithNavController(navController, appBarConfiguration)
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottomNavView.let {
+                it.setupWithNavController(navController)
+                it.itemIconTintList = null
+                navController.addOnDestinationChangedListener { _, destination, _ ->
 
-            binding.bottomNavView.visibility =
-                if (bottomNavigationScreensIds.contains(destination.id))
-                    View.VISIBLE else View.GONE
-
+                    it.visibility =
+                        if (bottomNavigationScreensIds.contains(destination.id))
+                            View.VISIBLE else View.GONE
+                }
+            }
         }
     }
-
 
     fun setupView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
