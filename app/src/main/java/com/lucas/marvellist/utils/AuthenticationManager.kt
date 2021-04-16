@@ -25,10 +25,6 @@ class AuthenticationManager private constructor() {
 
         suspend fun loginWithFirebaseFacebook(accessToken: AccessToken): AuthResult? {
             return try {
-                val user: FirebaseUser? = null
-
-                user!!.uid
-
                 awaitLoginWithFirebaseFacebook(accessToken)
             } catch (ex: Exception) {
                 null
