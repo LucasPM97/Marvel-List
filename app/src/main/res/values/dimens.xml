@@ -5,5 +5,6 @@
     <dimen name="title_font_size">24sp</dimen>
     <dimen name="description_font_size">14sp</dimen>
     <dimen name="small_image_corner">4dp</dimen>
+    <dimen name="comics_title_text_size">20sp</dimen>
 
 </resources>

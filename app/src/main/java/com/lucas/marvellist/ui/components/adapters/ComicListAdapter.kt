@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.character_details
+package com.lucas.marvellist.ui.components.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
