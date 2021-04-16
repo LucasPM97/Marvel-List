@@ -60,7 +60,7 @@ class EventsAdapter(
 
                     hasComics = !it.comics?.items.isNullOrEmpty()
 
-                    imageButton.setImageResource(
+                    imageCollapsingIcon.setImageResource(
                         if (isCollapsed) R.drawable.outline_expand_less_black_36 else R.drawable.outline_expand_more_black_36
                     )
 

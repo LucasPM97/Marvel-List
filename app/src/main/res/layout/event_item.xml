@@ -36,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp">
 
-                <ImageButton
-                    android:id="@+id/imageButton"
+                <ImageView
+                    android:id="@+id/image_collapsing_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="26dp"
@@ -72,7 +72,7 @@
                     android:layout_marginEnd="10dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                    app:layout_constraintEnd_toStartOf="@+id/image_collapsing_icon"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent">
 
