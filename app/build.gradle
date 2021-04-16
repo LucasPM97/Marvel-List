@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
 }
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -59,6 +60,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation 'androidx.annotation:annotation:1.1.0'
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
@@ -68,6 +70,13 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    // Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+
     // Support
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'

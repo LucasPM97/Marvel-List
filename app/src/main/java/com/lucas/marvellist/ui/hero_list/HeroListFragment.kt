@@ -2,15 +2,15 @@ package com.lucas.marvellist.ui.hero_list
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.FragmentHeroListBinding
 import com.lucas.marvellist.models.interfaces.IScrollToBottomListener
+import com.lucas.marvellist.ui.BaseFragment
 import com.lucas.marvellist.utils.extensions.setScrollToBottomListener
 
-class HeroListFragment : Fragment(R.layout.fragment_hero_list) {
+class HeroListFragment : BaseFragment(R.layout.fragment_hero_list) {
 
     private val viewModel: HeroListViewModel by viewModels()
 

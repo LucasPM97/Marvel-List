@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_hero_list">
         <action
             android:id="@+id/action_navigation_hero_list_to_characterDetailsFragment"
-            app:destination="@id/characterDetailsFragment" />
+            app:destination="@id/navigation_character_details" />
     </fragment>
 
     <fragment
@@ -21,7 +21,7 @@
         android:label="@string/marvel_challenge_title"
         tools:layout="@layout/fragment_events" />
     <fragment
-        android:id="@+id/characterDetailsFragment"
+        android:id="@+id/navigation_character_details"
         android:name="com.lucas.marvellist.ui.character_details.CharacterDetailsFragment"
         android:label="@string/character_details_label"
         tools:layout="@layout/character_details_fragment">
@@ -33,4 +33,9 @@
             android:defaultValue='""'
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.lucas.marvellist.ui.login.LoginFragment"
+        android:label="@string/login_title"
+        tools:layout="@layout/fragment_login" />
 </navigation>
