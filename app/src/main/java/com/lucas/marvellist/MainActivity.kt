@@ -1,26 +1,65 @@
 package com.lucas.marvellist
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.lucas.marvellist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private val bottomNavigationScreensIds = setOf(
+        R.id.navigation_hero_list,
+        R.id.navigation_events
+    )
+    private val topLevelScreen: Set<Int> = bottomNavigationScreensIds.union(
+        setOf(R.id.navigation_login)
+    )
+
+    private lateinit var navController: NavController
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        setupView()
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
+        navController = findNavController(R.id.nav_host_fragment)
+
+        val appBarConfiguration = AppBarConfiguration(topLevelScreen)
+
+        binding.apply {
+            setSupportActionBar(toolbar)
+            setupActionBarWithNavController(navController, appBarConfiguration)
+
+            bottomNavView.let {
+                it.setupWithNavController(navController)
+                it.itemIconTintList = null
+                navController.addOnDestinationChangedListener { _, destination, _ ->
+
+                    it.visibility =
+                        if (bottomNavigationScreensIds.contains(destination.id))
+                            View.VISIBLE else View.GONE
+                }
+            }
+        }
+    }
+
+    fun setupView() {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
