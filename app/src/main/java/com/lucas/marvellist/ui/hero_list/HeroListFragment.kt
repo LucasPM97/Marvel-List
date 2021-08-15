@@ -2,7 +2,9 @@ package com.lucas.marvellist.ui.hero_list
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.FragmentHeroListBinding
@@ -23,15 +25,29 @@ class HeroListFragment : BaseFragment(R.layout.fragment_hero_list) {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@HeroListFragment.viewModel
 
-            recyclerView.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = listAdapter
-                setScrollToBottomListener(5, object : IScrollToBottomListener {
-                    override fun bottomReached() {
-                        this@HeroListFragment.viewModel.loadMoreItems()
-                    }
-                })
+            listView.apply{
+                // Dispose the Composition when viewLifecycleOwner is destroyed
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner)
+                )
+                setContent {
+                    // In Compose world
+                    HeroList(
+                        this@HeroListFragment.viewModel.heroList,
+                        findNavController()
+                    )
+                }
             }
+
+//            recyclerView.apply {
+//                layoutManager = LinearLayoutManager(context)
+//                adapter = listAdapter
+//                setScrollToBottomListener(5, object : IScrollToBottomListener {
+//                    override fun bottomReached() {
+//                        this@HeroListFragment.viewModel.loadMoreItems()
+//                    }
+//                })
+//            }
 
         }
 
