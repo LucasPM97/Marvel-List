@@ -20,8 +20,8 @@ import com.lucas.marvellist.ui.hero_list.HeroListFragmentDirections
 fun CharactersList(
     liveCharacters: LiveData<List<Character>>,
     onBottomReached: (() -> Unit)?,
-    navController: NavController? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController? = null
 ) {
 
     val characters by liveCharacters.observeAsState(initial = emptyList())
