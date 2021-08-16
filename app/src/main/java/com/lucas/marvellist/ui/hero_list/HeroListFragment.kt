@@ -5,12 +5,9 @@ import android.view.View
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.FragmentHeroListBinding
-import com.lucas.marvellist.models.interfaces.IScrollToBottomListener
 import com.lucas.marvellist.ui.BaseFragment
-import com.lucas.marvellist.utils.extensions.setScrollToBottomListener
 
 class HeroListFragment : BaseFragment(R.layout.fragment_hero_list) {
 
@@ -32,23 +29,15 @@ class HeroListFragment : BaseFragment(R.layout.fragment_hero_list) {
                 )
                 setContent {
                     // In Compose world
-                    HeroList(
+                    CharactersList(
                         this@HeroListFragment.viewModel.heroList,
+                        onBottomReached = {
+                            this@HeroListFragment.viewModel.loadMoreItems()
+                        },
                         findNavController()
                     )
                 }
             }
-
-//            recyclerView.apply {
-//                layoutManager = LinearLayoutManager(context)
-//                adapter = listAdapter
-//                setScrollToBottomListener(5, object : IScrollToBottomListener {
-//                    override fun bottomReached() {
-//                        this@HeroListFragment.viewModel.loadMoreItems()
-//                    }
-//                })
-//            }
-
         }
 
         implementObservers()

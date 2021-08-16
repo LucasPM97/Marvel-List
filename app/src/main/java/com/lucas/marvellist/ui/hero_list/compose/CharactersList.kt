@@ -3,11 +3,9 @@ package com.lucas.marvellist.ui.hero_list
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -18,14 +16,13 @@ import com.lucas.marvellist.models.Character
 
 
 @Composable
-fun HeroList(liveCharacters: LiveData<List<Character>>, navController: NavController? = null) {
+fun CharactersList(
+    liveCharacters: LiveData<List<Character>>,
+    onBottomReached: (() -> Unit)?,
+    navController: NavController? = null
+) {
 
     val characters by liveCharacters.observeAsState(initial = emptyList())
-
-    val listState = rememberLazyListState()
-
-    // Remember a CoroutineScope to be able to launch
-    val coroutineScope = rememberCoroutineScope()
 
     fun handleOnClick(character: Character):Unit{
         navController?.let {
@@ -40,8 +37,14 @@ fun HeroList(liveCharacters: LiveData<List<Character>>, navController: NavContro
     }
 
     LazyColumn() {
-        itemsIndexed(characters) { _, character ->
-            HeroItem(
+        itemsIndexed(characters) { index, character ->
+            if (index == characters.lastIndex){
+                onBottomReached?.let{
+                    it()
+                }
+            }
+
+            CharacterItem(
                 character,
                 modifier = Modifier
                     .padding(bottom = 9.dp),
@@ -55,7 +58,7 @@ fun HeroList(liveCharacters: LiveData<List<Character>>, navController: NavContro
 
 @Composable
 @Preview
-private fun PreviewHeroList() {
+private fun PreviewCharacterList() {
     val liveList = MutableLiveData<List<Character>>(
         listOf(
             Character(
@@ -65,5 +68,5 @@ private fun PreviewHeroList() {
         )
     )
 
-    HeroList(liveList)
+    CharactersList(liveList, null)
 }

@@ -12,7 +12,7 @@ import com.lucas.marvellist.models.Character
 
 
 @Composable
-fun HeroItem(character: Character, modifier: Modifier, onClick: (Character) -> Unit) {
+fun CharacterItem(character: Character, modifier: Modifier, onClick: (Character) -> Unit) {
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -43,8 +43,8 @@ fun HeroItem(character: Character, modifier: Modifier, onClick: (Character) -> U
 
 @Composable
 @Preview
-private fun PreviewHeroItem() {
-    HeroItem(
+private fun PreviewCharacterItem() {
+    CharacterItem(
         character = Character(
             name = "Stan lee",
             description = "Description sample"
