@@ -20,7 +20,8 @@ import com.lucas.marvellist.ui.hero_list.HeroListFragmentDirections
 fun CharactersList(
     liveCharacters: LiveData<List<Character>>,
     onBottomReached: (() -> Unit)?,
-    navController: NavController? = null
+    navController: NavController? = null,
+    modifier: Modifier = Modifier
 ) {
 
     val characters by liveCharacters.observeAsState(initial = emptyList())
@@ -37,7 +38,7 @@ fun CharactersList(
         }
     }
 
-    LazyColumn() {
+    LazyColumn(modifier = modifier) {
         itemsIndexed(characters) { index, character ->
             if (index == characters.lastIndex) {
                 onBottomReached?.let {
