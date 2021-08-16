@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.hero_list
+package com.lucas.marvellist.ui.hero_list.compose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -34,7 +34,8 @@ fun CharacterItem(character: Character, modifier: Modifier, onClick: (Character)
                     character,
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(start = 16.dp, end = 30.dp, bottom = 28.dp))
+                        .padding(start = 16.dp, end = 30.dp, bottom = 28.dp)
+                )
             }
 
         }

@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.hero_list
+package com.lucas.marvellist.ui.hero_list.compose
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -13,7 +13,7 @@ import com.lucas.marvellist.models.Character
 import com.lucas.marvellist.utils.extensions.fontDimensionResource
 
 @Composable
-fun CharacterInfo(character: Character,modifier: Modifier) {
+fun CharacterInfo(character: Character, modifier: Modifier) {
     Column(
         modifier = modifier
     ) {

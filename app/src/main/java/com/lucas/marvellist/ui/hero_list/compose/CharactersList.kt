@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.hero_list
+package com.lucas.marvellist.ui.hero_list.compose
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,6 +13,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import com.lucas.marvellist.models.Character
+import com.lucas.marvellist.ui.hero_list.HeroListFragmentDirections
 
 
 @Composable
@@ -24,7 +25,7 @@ fun CharactersList(
 
     val characters by liveCharacters.observeAsState(initial = emptyList())
 
-    fun handleOnClick(character: Character):Unit{
+    fun handleOnClick(character: Character): Unit {
         navController?.let {
 
             val action =
@@ -38,8 +39,8 @@ fun CharactersList(
 
     LazyColumn() {
         itemsIndexed(characters) { index, character ->
-            if (index == characters.lastIndex){
-                onBottomReached?.let{
+            if (index == characters.lastIndex) {
+                onBottomReached?.let {
                     it()
                 }
             }

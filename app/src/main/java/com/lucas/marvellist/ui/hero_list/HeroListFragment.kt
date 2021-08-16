@@ -8,12 +8,11 @@ import androidx.navigation.findNavController
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.FragmentHeroListBinding
 import com.lucas.marvellist.ui.BaseFragment
+import com.lucas.marvellist.ui.hero_list.compose.CharactersList
 
 class HeroListFragment : BaseFragment(R.layout.fragment_hero_list) {
 
     private val viewModel: HeroListViewModel by viewModels()
-
-    private val listAdapter = HeroListAdapter(arrayListOf())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,7 +21,7 @@ class HeroListFragment : BaseFragment(R.layout.fragment_hero_list) {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@HeroListFragment.viewModel
 
-            listView.apply{
+            listView.apply {
                 // Dispose the Composition when viewLifecycleOwner is destroyed
                 setViewCompositionStrategy(
                     ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner)
@@ -40,15 +39,6 @@ class HeroListFragment : BaseFragment(R.layout.fragment_hero_list) {
             }
         }
 
-        implementObservers()
         viewModel.loadScreenIfNeeded()
-    }
-
-    private fun implementObservers() {
-        viewModel.heroList.observe(viewLifecycleOwner, { heroes ->
-            heroes?.let {
-                listAdapter.updateList(it)
-            }
-        })
     }
 }
