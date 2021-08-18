@@ -2,6 +2,11 @@ package com.lucas.marvellist.ui.events
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +14,8 @@ import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.EventItemBinding
 import com.lucas.marvellist.models.Event
 import com.lucas.marvellist.ui.components.adapters.ComicListAdapter
+import com.lucas.marvellist.ui.events.compose.EventItem
+import com.lucas.marvellist.ui.hero_list.compose.HeroListScreen
 
 class EventsAdapter(
     private var events: List<Event>
@@ -52,39 +59,14 @@ class EventsAdapter(
             isCollapsed: Boolean,
             updateCollapsedItemPosition: (Int) -> Unit
         ) {
-            binding.apply {
-                collapsed = isCollapsed
-
-                eventData?.let {
-                    event = it
-
-                    hasComics = !it.comics?.items.isNullOrEmpty()
-
-                    imageCollapsingIcon.setImageResource(
-                        if (isCollapsed) R.drawable.outline_expand_less_black_36 else R.drawable.outline_expand_more_black_36
+            binding.root.apply {
+                setContent {
+                    EventItem(
+                        eventData!!,
+                        Modifier
+                            .fillMaxWidth()
                     )
-
-                    if (isCollapsed) {
-                        recyclerView.apply {
-                            layoutManager = LinearLayoutManager(context)
-                            adapter = ComicListAdapter(it.comics?.items ?: emptyList())
-                            addItemDecoration(
-                                DividerItemDecoration(
-                                    context,
-                                    DividerItemDecoration.VERTICAL
-                                )
-                            )
-                        }
-                    }
-                    root.setOnClickListener {
-                        if (!eventData.comics?.items.isNullOrEmpty()) {
-                            updateCollapsedItemPosition(
-                                if (isCollapsed!!) -1 else layoutPosition
-                            )
-                        }
-                    }
                 }
-
             }
         }
     }
