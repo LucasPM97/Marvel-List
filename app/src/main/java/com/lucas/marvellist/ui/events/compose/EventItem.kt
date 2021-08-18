@@ -1,6 +1,10 @@
 package com.lucas.marvellist.ui.events.compose
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
@@ -19,7 +23,9 @@ fun EventItem(
     val collapsedState = remember { mutableStateOf(false) }
 
     Card(
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable { collapsedState.value = !collapsedState.value },
         shape = RoundedCornerShape(4.dp)
     ) {
         Column {
