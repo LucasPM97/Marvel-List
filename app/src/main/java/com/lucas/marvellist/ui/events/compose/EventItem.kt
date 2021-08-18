@@ -1,11 +1,13 @@
 package com.lucas.marvellist.ui.events.compose
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lucas.marvellist.models.Event
@@ -22,7 +24,14 @@ fun EventItem(
         modifier = modifier,
         shape = RoundedCornerShape(4.dp)
     ) {
-        Column {
+        Column(
+            modifier = Modifier
+                .padding(
+                    start = 17.dp,
+                    top = 17.dp,
+                    end = 10.dp
+                )
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -33,8 +42,6 @@ fun EventItem(
                     modifier = Modifier
                         .size(86.dp)
                         .padding(
-                            start = 17.dp,
-                            top = 17.dp,
                             bottom = 17.dp
                         )
                 )
@@ -42,9 +49,7 @@ fun EventItem(
                     event,
                     modifier = Modifier
                         .padding(
-                            start = 33.dp,
-                            top = 17.dp,
-                            end = 10.dp
+                            start = 33.dp
                         )
                 )
             }
