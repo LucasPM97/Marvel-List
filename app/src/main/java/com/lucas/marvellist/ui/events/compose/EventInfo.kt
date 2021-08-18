@@ -13,14 +13,9 @@ import com.lucas.marvellist.R
 import com.lucas.marvellist.models.Event
 
 @Composable
-fun EventInfo(event: Event) {
+fun EventInfo(event: Event, modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier
-            .padding(
-                start = 33.dp,
-                top = 17.dp,
-                end = 10.dp
-            )
+        modifier = modifier
     ) {
         Text(
             text = event.title,

@@ -1,11 +1,7 @@
 package com.lucas.marvellist.ui.events.compose
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
@@ -19,14 +15,11 @@ import com.lucas.marvellist.models.Event
 fun EventItem(
     event: Event,
     modifier: Modifier = Modifier,
-    collapsed: Boolean,
-    onClick: (Event) -> Unit
+    collapsed: Boolean
 ) {
 
     Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable { onClick(event) },
+        modifier = modifier,
         shape = RoundedCornerShape(4.dp)
     ) {
         Column {
@@ -35,8 +28,25 @@ fun EventItem(
                     .fillMaxWidth()
                     .height(120.dp)
             ) {
-                EventImage(event)
-                EventInfo(event)
+                EventImage(
+                    event,
+                    modifier = Modifier
+                        .size(86.dp)
+                        .padding(
+                            start = 17.dp,
+                            top = 17.dp,
+                            bottom = 17.dp
+                        )
+                )
+                EventInfo(
+                    event,
+                    modifier = Modifier
+                        .padding(
+                            start = 33.dp,
+                            top = 17.dp,
+                            end = 10.dp
+                        )
+                )
             }
 
             EventComics(
@@ -57,9 +67,6 @@ fun PreviewEventItem() {
             start = "1999",
             end = "2000"
         ),
-        collapsed = true,
-        onClick = {
-
-        }
+        collapsed = true
     )
 }
