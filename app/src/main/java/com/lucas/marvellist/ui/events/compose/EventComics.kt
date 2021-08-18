@@ -1,5 +1,7 @@
 package com.lucas.marvellist.ui.events.compose
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -10,13 +12,14 @@ import com.lucas.marvellist.models.Event
 import com.lucas.marvellist.ui.composables.ComicList
 import com.lucas.marvellist.utils.extensions.fontDimensionResource
 
+@ExperimentalAnimationApi
 @Composable
 fun EventComics(
     event: Event,
     collapsed: Boolean
 ) {
     event.comics?.let {
-        if (collapsed) {
+        AnimatedVisibility(visible = collapsed) {
             Column {
                 Text(
                     text = stringResource(
