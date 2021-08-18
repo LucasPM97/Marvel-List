@@ -1,8 +1,9 @@
 package com.lucas.marvellist.ui.events.compose
 
-import android.graphics.Bitmap
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -59,11 +60,10 @@ fun EventList(
             EventItem(
                 event,
                 modifier = Modifier
-                    .padding(bottom = 9.dp),
-                collapsed = collapsedIndexState.value == index,
-                onClick = {
-                    itemOnClick(index)
-                }
+                    .padding(bottom = 9.dp)
+                    .fillMaxWidth()
+                    .clickable { itemOnClick(index) },
+                collapsed = collapsedIndexState.value == index
             )
         }
     }
