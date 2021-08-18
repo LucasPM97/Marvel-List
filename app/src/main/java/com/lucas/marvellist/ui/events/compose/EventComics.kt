@@ -5,6 +5,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.lucas.marvellist.R
@@ -16,12 +17,13 @@ import com.lucas.marvellist.utils.extensions.fontDimensionResource
 @Composable
 fun EventComics(
     event: Event,
-    collapsed: Boolean
+    collapsed: Boolean,
+    modifier: Modifier = Modifier
 ) {
     event.comics?.let { comics ->
         if (!comics.items.isNullOrEmpty()) {
             AnimatedVisibility(visible = collapsed) {
-                Column {
+                Column(modifier = modifier) {
                     Text(
                         text = stringResource(
                             R.string.event_comics_title

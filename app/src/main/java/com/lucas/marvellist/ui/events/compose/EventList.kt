@@ -36,12 +36,12 @@ fun EventList(
 
     fun itemOnClick(index: Int) {
         coroutineScope.launch {
-            // Animate scroll to the 10th item
+            listState.animateScrollToItem(index)
+
             collapsedIndexState.value =
                 if (collapsedIndexState.value == index) -1
                 else index
 
-            listState.animateScrollToItem(index)
         }
     }
 
