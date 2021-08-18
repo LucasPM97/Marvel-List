@@ -18,19 +18,21 @@ fun EventComics(
     event: Event,
     collapsed: Boolean
 ) {
-    event.comics?.let {
-        AnimatedVisibility(visible = collapsed) {
-            Column {
-                Text(
-                    text = stringResource(
-                        R.string.event_comics_title
-                    ).uppercase(),
-                    color = Color.Black,
-                    fontSize = fontDimensionResource(R.dimen.comics_title_text_size)
-                )
-                ComicList(
-                    event.comics
-                )
+    event.comics?.let { comics ->
+        if (!comics.items.isNullOrEmpty()) {
+            AnimatedVisibility(visible = collapsed) {
+                Column {
+                    Text(
+                        text = stringResource(
+                            R.string.event_comics_title
+                        ).uppercase(),
+                        color = Color.Black,
+                        fontSize = fontDimensionResource(R.dimen.comics_title_text_size)
+                    )
+                    ComicList(
+                        event.comics
+                    )
+                }
             }
         }
     }
