@@ -2,6 +2,7 @@ package com.lucas.marvellist.utils.extensions
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.ui.graphics.Color
 import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -21,6 +22,12 @@ fun String.toSimplifiedDateString(): String? {
     } else {
         this.toDate()?.parseToSimplifiedString()
     }
+}
+
+fun String.color(): Color {
+    return Color(
+        android.graphics.Color.parseColor(this)
+    )
 }
 
 
