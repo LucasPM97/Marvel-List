@@ -6,17 +6,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.lucas.marvellist.models.Event
+import kotlinx.coroutines.launch
 
 
 @ExperimentalAnimationApi
@@ -27,16 +26,26 @@ fun EventList(
     modifier: Modifier = Modifier
 ) {
 
+    val listState = rememberLazyListState()
+// Remember a CoroutineScope to be able to launch
+    val coroutineScope = rememberCoroutineScope()
+
     val events by liveEvents.observeAsState(initial = emptyList())
     val collapsedIndexState = remember { mutableStateOf<Int>(-1) }
 
     fun itemOnClick(index: Int) {
-        collapsedIndexState.value =
-            if (collapsedIndexState.value == index) -1
-            else index
+        coroutineScope.launch {
+            // Animate scroll to the 10th item
+            collapsedIndexState.value =
+                if (collapsedIndexState.value == index) -1
+                else index
+
+            listState.animateScrollToItem(index)
+        }
     }
 
     LazyColumn(
+        state = listState,
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
