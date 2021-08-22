@@ -2,13 +2,16 @@ package com.lucas.marvellist.ui.character_details
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.CharacterDetailsFragmentBinding
 import com.lucas.marvellist.ui.BaseFragment
+import com.lucas.marvellist.ui.character_details.compose.CharacterDetailsScreen
 import com.lucas.marvellist.ui.components.adapters.ComicListAdapter
+import com.lucas.marvellist.ui.events.compose.EventsScreen
 
 class CharacterDetailsFragment : BaseFragment(R.layout.character_details_fragment) {
 
@@ -18,22 +21,16 @@ class CharacterDetailsFragment : BaseFragment(R.layout.character_details_fragmen
         super.onViewCreated(view, savedInstanceState)
 
         CharacterDetailsFragmentBinding.bind(view).apply {
-            lifecycleOwner = viewLifecycleOwner
-
             args?.let {
-
-                recyclerView.apply {
-                    layoutManager = LinearLayoutManager(context)
-                    adapter = ComicListAdapter(it.character.comics?.items ?: emptyList())
-                    addItemDecoration(
-                        DividerItemDecoration(
-                            context,
-                            DividerItemDecoration.VERTICAL
-                        )
+                root.apply {
+                    // Dispose the Composition when viewLifecycleOwner is destroyed
+                    setViewCompositionStrategy(
+                        ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner)
                     )
+                    setContent {
+                        CharacterDetailsScreen(character = it.character)
+                    }
                 }
-
-                character = it.character
             }
         }
 
