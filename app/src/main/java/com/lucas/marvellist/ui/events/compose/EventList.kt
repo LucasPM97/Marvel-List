@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.lucas.marvellist.models.Event
+import com.lucas.marvellist.models.ImageThumbnail
 import kotlinx.coroutines.launch
 
 
@@ -32,14 +33,14 @@ fun EventList(
     val coroutineScope = rememberCoroutineScope()
 
     val events by liveEvents.observeAsState(initial = emptyList())
-    val collapsedIndexState = remember { mutableStateOf<Int>(-1) }
+    var collapsedIndexState by remember { mutableStateOf<Int>(-1) }
 
     fun itemOnClick(index: Int) {
         coroutineScope.launch {
             listState.animateScrollToItem(index)
 
-            collapsedIndexState.value =
-                if (collapsedIndexState.value == index) -1
+            collapsedIndexState =
+                if (collapsedIndexState == index) -1
                 else index
 
         }
@@ -63,7 +64,7 @@ fun EventList(
                     .padding(bottom = 9.dp)
                     .fillMaxWidth()
                     .clickable { itemOnClick(index) },
-                collapsed = collapsedIndexState.value == index
+                collapsed = collapsedIndexState == index
             )
         }
     }
@@ -76,9 +77,22 @@ private fun PreviewEventList() {
     val liveList = MutableLiveData<List<Event>>(
         listOf(
             Event(
-                title = "Title Sample",
-                start = "1999",
-                end = "2000"
+                title = "Event Title",
+                start = "1989-12-10 00:00:00",
+                end = "2008-01-04 00:00:00",
+                thumbnail = ImageThumbnail(
+                    path = "http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73",
+                    extension = "jpg"
+                )
+            ),
+            Event(
+                title = "Event Title 2",
+                start = "1989-02-10 00:00:00",
+                end = "2008-01-24 00:00:00",
+                thumbnail = ImageThumbnail(
+                    path = "http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73",
+                    extension = "jpg"
+                )
             )
         )
     )
