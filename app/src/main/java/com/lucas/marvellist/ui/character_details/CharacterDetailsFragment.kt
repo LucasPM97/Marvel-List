@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucas.marvellist.R
 import com.lucas.marvellist.databinding.CharacterDetailsFragmentBinding
 import com.lucas.marvellist.ui.BaseFragment
 import com.lucas.marvellist.ui.character_details.compose.CharacterDetailsScreen
-import com.lucas.marvellist.ui.components.adapters.ComicListAdapter
-import com.lucas.marvellist.ui.events.compose.EventsScreen
 
 class CharacterDetailsFragment : BaseFragment(R.layout.character_details_fragment) {
 
