@@ -7,7 +7,7 @@
     <string name="generic_server_error_message">Hubo un error al conectarse con nuestros servidores, por favor vuelva a intentarlo nuevamente</string>
     <string name="character_details_label">{characterName}</string>
     <string name="marvel_challenge_title">Marvel Challenge</string>
-    <string name="title_hero_list">Personajes</string>
+    <string name="title_characters">Personajes</string>
     <string name="title_events">Eventos</string>
     <string name="event_comics_title">Comics a discutir</string>
     <string name="character_details_comics_title">Comics en los que aparece</string>

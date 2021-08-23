@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.hero_list.compose
+package com.lucas.marvellist.ui.characters.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape

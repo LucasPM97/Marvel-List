@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.hero_list.compose
+package com.lucas.marvellist.ui.characters.compose
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

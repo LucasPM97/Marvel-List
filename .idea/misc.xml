@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/event_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_hero_list.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/hero_item.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.225" />
       </map>
     </option>
   </component>

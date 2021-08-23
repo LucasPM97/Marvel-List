@@ -17,6 +17,6 @@ object RetrofitBuilder {
             .build() //Doesn't require the adapter
     }
 
-    val heroService: HeroService = getRetrofit().create(HeroService::class.java)
+    val CHARACTERS_SERVICE: CharactersService = getRetrofit().create(CharactersService::class.java)
     val eventsService: EventsService = getRetrofit().create(EventsService::class.java)
 }

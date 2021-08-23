@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_hero_list"
+        android:id="@+id/navigation_characters"
         android:icon="@drawable/bottom_bar_characters_icon"
-        android:title="@string/title_hero_list" />
+        android:title="@string/title_characters" />
 
     <item
         android:id="@+id/navigation_events"

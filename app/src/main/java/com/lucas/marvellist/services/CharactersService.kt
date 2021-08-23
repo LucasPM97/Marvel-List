@@ -6,7 +6,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface HeroService {
+interface CharactersService {
     @GET("characters")
     suspend fun getCharacters(
         @Query("offset") offset: Int,
