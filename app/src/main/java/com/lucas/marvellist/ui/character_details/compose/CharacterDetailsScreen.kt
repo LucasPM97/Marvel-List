@@ -32,16 +32,19 @@ fun CharacterDetailsScreen(character: Character) {
                 .padding(top = 20.dp)
                 .padding(horizontal = 10.dp)
         ) {
-            Text(
-                character.description ?: "",
-                modifier = Modifier
-                    .fillMaxWidth(),
-                color = colorResource(id = R.color.description_text_color)
-            )
+
+            if (!character.description.isNullOrEmpty()){
+                Text(
+                    character.description,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 20.dp),
+                    color = colorResource(id = R.color.description_text_color)
+                )
+            }
 
             CharacterComics(
-                character,
-                Modifier.padding(top = 9.dp)
+                character
             )
         }
     }

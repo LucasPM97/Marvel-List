@@ -24,7 +24,6 @@ fun CharacterComics(
             Text(
                 stringResource(id = R.string.character_details_comics_title)
                     .uppercase(),
-                Modifier.padding(top = 38.dp),
                 fontFamily = FontFamily.SansSerif,
                 color = colorResource(id = R.color.black),
                 fontSize = fontDimensionResource(R.dimen.comics_title_text_size)
