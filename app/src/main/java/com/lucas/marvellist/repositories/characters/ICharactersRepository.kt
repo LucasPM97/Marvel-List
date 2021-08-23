@@ -1,8 +1,8 @@
-package com.lucas.marvellist.repositories.heroList
+package com.lucas.marvellist.repositories.characters
 
 import com.lucas.marvellist.models.Character
 
-interface IHeroListRepository {
+interface ICharactersRepository {
 
     suspend fun getCharacters(offSet: Int): List<Character>?
 

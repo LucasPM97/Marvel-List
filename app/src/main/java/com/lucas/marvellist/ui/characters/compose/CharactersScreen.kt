@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.hero_list.compose
+package com.lucas.marvellist.ui.characters.compose
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,17 +9,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.lucas.marvellist.ui.composables.ListProgressBar
-import com.lucas.marvellist.ui.hero_list.HeroListViewModel
+import com.lucas.marvellist.ui.characters.CharactersViewModel
 
 @Composable
-fun HeroListScreen(viewModel: HeroListViewModel, navController: NavController?) {
+fun CharactersScreen(viewModel: CharactersViewModel, navController: NavController?) {
     Column {
         ListProgressBar(
             isLoadingLive = viewModel.isLoading,
             modifier = Modifier.fillMaxWidth()
         )
         CharactersList(
-            viewModel.heroList,
+            viewModel.characters,
             onBottomReached = {
                 viewModel.loadMoreItems()
             },

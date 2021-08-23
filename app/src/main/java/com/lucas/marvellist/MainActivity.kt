@@ -13,7 +13,7 @@ import com.lucas.marvellist.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private val bottomNavigationScreensIds = setOf(
-        R.id.navigation_hero_list,
+        R.id.navigation_characters,
         R.id.navigation_events
     )
     private val topLevelScreen: Set<Int> = bottomNavigationScreensIds.union(

@@ -1,4 +1,4 @@
-package com.lucas.marvellist.ui.hero_list.compose
+package com.lucas.marvellist.ui.characters.compose
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,7 +13,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import com.lucas.marvellist.models.Character
-import com.lucas.marvellist.ui.hero_list.HeroListFragmentDirections
+import com.lucas.marvellist.ui.characters.CharactersFragmentDirections
 
 
 @Composable
@@ -30,7 +30,7 @@ fun CharactersList(
         navController?.let {
 
             val action =
-                HeroListFragmentDirections.actionNavigationHeroListToCharacterDetailsFragment(
+                CharactersFragmentDirections.actionNavigationCharactersToCharacterDetailsFragment(
                     character,
                     character.name!!
                 )

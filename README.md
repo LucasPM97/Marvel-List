@@ -10,7 +10,6 @@ CONSUMER_SECRET="<Marvel Private Api key>"
 
 ### Know-issues
 
-- Classes names : Hero List classes should replace the "Hero" word to "Character"
 - Loading : The ProgressBar should appear on the top of the screen only if is the first time the screen is loaded, and it should appear on the bottom of the screen when the user tries to get more items.
 - Toolbar title: The Toolbar title should be centered.
 - Character Details back button: The back button icon on the Character Details screen is not the one defined in the design.

@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_hero_list">
+    app:startDestination="@+id/navigation_characters">
 
     <fragment
-        android:id="@+id/navigation_hero_list"
-        android:name="com.lucas.marvellist.ui.hero_list.HeroListFragment"
+        android:id="@+id/navigation_characters"
+        android:name="com.lucas.marvellist.ui.characters.CharactersFragment"
         android:label="@string/marvel_challenge_title"
-        tools:layout="@layout/fragment_hero_list">
+        tools:layout="@layout/fragment_characters">
         <action
-            android:id="@+id/action_navigation_hero_list_to_characterDetailsFragment"
+            android:id="@+id/action_navigation_characters_to_characterDetailsFragment"
             app:destination="@id/navigation_character_details" />
     </fragment>
 

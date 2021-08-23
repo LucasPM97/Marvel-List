@@ -1,20 +1,20 @@
-package com.lucas.marvellist.ui.hero_list
+package com.lucas.marvellist.ui.characters
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lucas.marvellist.models.Character
 import com.lucas.marvellist.models.genericViewModels.BaseListViewModel
-import com.lucas.marvellist.models.interfaces.IHeroListViewModel
-import com.lucas.marvellist.repositories.heroList.HeroListRepository
+import com.lucas.marvellist.models.interfaces.ICharactersViewModel
+import com.lucas.marvellist.repositories.characters.CharactersRepository
 import com.lucas.marvellist.services.RetrofitBuilder
 import com.lucas.marvellist.utils.extensions.addRange
 import kotlinx.coroutines.launch
 
-class HeroListViewModel : BaseListViewModel(), IHeroListViewModel {
+class CharactersViewModel : BaseListViewModel(), ICharactersViewModel {
 
-    override val heroList = MutableLiveData<List<Character>>()
-    override val repository = HeroListRepository(
-        RetrofitBuilder.heroService
+    override val characters = MutableLiveData<List<Character>>()
+    override val repository = CharactersRepository(
+        RetrofitBuilder.CHARACTERS_SERVICE
     )
 
     override fun loadScreenIfNeeded() {
@@ -23,21 +23,21 @@ class HeroListViewModel : BaseListViewModel(), IHeroListViewModel {
                 val result = loadItems(0)
 
                 if (!result.isNullOrEmpty()) {
-                    heroList.value = result
+                    characters.value = result
                 }
             }
         }
     }
 
-    override fun needsToLoadScreen(): Boolean = heroList.value.isNullOrEmpty()
+    override fun needsToLoadScreen(): Boolean = characters.value.isNullOrEmpty()
 
     override fun loadMoreItems() {
         if (shouldLoadMore()) {
             viewModelScope.launch {
-                val result = loadItems(heroList.value!!.count())
+                val result = loadItems(characters.value!!.count())
 
                 if (!result.isNullOrEmpty()) {
-                    heroList.addRange(result)
+                    characters.addRange(result)
                 }
             }
         }
@@ -61,6 +61,6 @@ class HeroListViewModel : BaseListViewModel(), IHeroListViewModel {
 
 
     override fun shouldLoadMore(): Boolean =
-        !heroList.value.isNullOrEmpty() && !isLoading.value!!
+        !characters.value.isNullOrEmpty() && !isLoading.value!!
 
 }
